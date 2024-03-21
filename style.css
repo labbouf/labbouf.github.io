@@ -314,7 +314,7 @@ section {
 .fixed-header {
   position: fixed;
   top: 0;
-  left: 20px;
+  left: 15px;
   width: 100%;
   
   color: none;
