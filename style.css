@@ -496,13 +496,15 @@ section {
     width: 100%; /* Adjust the width as needed */
     display: flex; /* Align items in a row */
     overflow: hidden; /* Prevents children from overflowing */
+  
 }
 
 .image-container2 img {
-    width: 49%; /* Each image takes up half the container's width */
+    width: 48%; /* Each image takes up half the container's width */
     height: auto; /* Maintain aspect ratio */
-    object-fit: cover; /* Cover their area without stretching */
-    max-height: 100%; /* Ensure images don't exceed container height */
+    object-fit: contain; /* Cover their area without stretching */
+    max-height: 100%;
+  gap: auto;/* Ensure images don't exceed container height */
 }
 
 
