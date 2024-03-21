@@ -475,9 +475,43 @@ section {
 }
 
 .image-column2 img {
-  width: 250px; /* Set width of each image */
+  width: auto; /* Set width of each image */
   height: auto; /* Maintain aspect ratio */
 }
+
+
+.image-column3 {
+  display: flex;
+  width: 100%;
+}
+
+.image-column3 img {
+  width: 50%; /* Set width of each image */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover;
+}
+
+
+.image-container2 {
+    width: 100%; /* Adjust the width as needed */
+    display: flex; /* Align items in a row */
+    overflow: hidden; /* Prevents children from overflowing */
+}
+
+.image-container2 img {
+    width: 49%; /* Each image takes up half the container's width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Cover their area without stretching */
+    max-height: 100%; /* Ensure images don't exceed container height */
+}
+
+
+
+.video-container {
+            text-align: right; /* Aligns the iframe to the right */
+        }
+
+
 
 
 
@@ -581,3 +615,13 @@ section {
     color: white;
     border-color: none; /* Change the border color on hover */
 }
+
+
+
+
+.flex-container {
+    display: flex;
+    flex-direction: column; /* Adjust as needed */
+    /* Other styling as needed */
+}
+

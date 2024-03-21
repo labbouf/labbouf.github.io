@@ -230,3 +230,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Attach reset functionality to the reset button
     document.getElementById('resetItems').addEventListener('click', resetItems);
 });
+
+
+
+
