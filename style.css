@@ -478,3 +478,106 @@ section {
   width: 250px; /* Set width of each image */
   height: auto; /* Maintain aspect ratio */
 }
+
+
+
+
+/* THIS IS WHERE THE DRESSING UP CODE STARTS*/
+
+
+
+/* Character container */
+.character {
+    width: 250px; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+    border: none;
+    margin: 20px auto;
+    position: relative;
+}
+
+
+
+.positioned {
+    position: absolute;
+    cursor: move; /* Optional: Changes the cursor to indicate movable items */
+}
+
+.tabs {
+    text-align: left; /* Align the tabs to the left */
+    margin-bottom: 10px;
+}
+
+.tablink {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid;
+  border-color: #000000;
+    border-radius: 0px;
+    margin-right: 10px;
+  margin-bottom: 10px;
+    font-size: 12px;
+ 
+  color: #000000;
+  font-family: "Gotham Narrow Bold";
+  text-transform: uppercase;
+  
+}
+
+.tablink.active {
+    background-color: #000000;
+    color: white;
+}
+
+/* Tab content */
+.tabcontent {
+    display: none;
+  width: 100px; /* Adjust as needed */
+  
+    height: auto; /* Adjust as needed */
+}
+
+.tablink:hover {
+    background-color: #000000;
+  color: #ffffff;
+    color: white;
+    border-color: none; /* Change the border color on hover */
+}
+
+/* Clothing items */
+.item {
+    width: 250px; /* Adjust as needed */
+    height: auto; /* Adjust as needed */
+    margin: 5px;
+}
+
+.invisible {
+    display: none;
+}
+
+
+#resetItems {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: transparent; /* Red */
+      font-size: 12px;
+   border: 2px solid;
+  border-color: #000000;
+  color: #000000;
+  font-family: "Gotham Narrow Bold";
+  text-transform: uppercase;
+    border-radius: 0px;
+    margin-bottom: 10px;
+    display: block;
+  
+   margin-left: auto; 
+    margin-right: 0; 
+  
+}
+
+#resetItems:hover {
+    background-color: #000000;
+  color: #ffffff;
+    color: white;
+    border-color: none; /* Change the border color on hover */
+}
