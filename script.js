@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function() {
     // Check password when submitting the form
     document.getElementById("password-submit").addEventListener("click", function() {
         var password = document.getElementById("password-input").value;
-        // Replace "yourpassword" with the actual password
-        if (password === "yourpassword") {
+        
+        if (password === "givememo") {
             document.getElementById("password-prompt").style.display = "none"; // Hide the password prompt
             document.getElementById("content").style.display = "block"; // Display the content
         } else {
@@ -154,3 +154,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* THIS IS WHERE THE DRESSING UP CODE STARTS*/
+
+
+
+// Function to open a specific tab content
+function openTab(event, tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+    }
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.classList.add("active");
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to handle item click events
+    function handleItemClick(event) {
+        const item = event.target;
+        const character = document.getElementById('character');
+
+        // Check if the item is currently positioned on the character
+        if (item.dataset.onCharacter === "true") {
+            // Move it back to its original tab
+            const originalTabId = item.dataset.originalTab;
+            const originalTab = document.getElementById(originalTabId);
+            originalTab.appendChild(item);
+            // Reset item state and styles
+            item.dataset.onCharacter = "false";
+            item.removeAttribute('style');
+        } else {
+            // If clicked within a tab, move it to the character at specified position
+            character.appendChild(item);
+            item.style.position = 'absolute';
+            item.style.left = item.dataset.x + 'px';
+            item.style.top = item.dataset.y + 'px';
+            // Mark the item as positioned on the character
+            item.dataset.onCharacter = "true";
+        }
+    }
+
+    // Initialize each item
+    function initItems() {
+        document.querySelectorAll('.tabcontent .item').forEach(item => {
+            // Attach click event listener to each item
+            item.addEventListener('click', handleItemClick);
+            // Store original parent tab ID for each item
+            item.dataset.originalTab = item.parentElement.id;
+            // Initially, items are not on the character
+            item.dataset.onCharacter = "false";
+        });
+    }
+    
+    initItems();
+
+    // Reset function to move items from character back to their original tabs
+    function resetItems() {
+        document.querySelectorAll('.item').forEach(item => {
+            if (item.dataset.onCharacter === "true") {
+                const originalTabId = item.dataset.originalTab;
+                const originalTab = document.getElementById(originalTabId);
+                originalTab.appendChild(item);
+                // Reset item state and remove styles
+                item.dataset.onCharacter = "false";
+                item.removeAttribute('style');
+            }
+        });
+    }
+    
+    // Attach reset functionality to the reset button
+    document.getElementById('resetItems').addEventListener('click', resetItems);
+});
