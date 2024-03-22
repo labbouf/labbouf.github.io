@@ -516,6 +516,19 @@ section {
 
 
 
+  .image-container3 {
+           display: flex;
+            justify-content: space-between; /* Distributes space evenly between the images */
+            width: 100%;
+    gap: 20px;
+  
+        }
+        .image-container3 img {
+            margin: 5px; /* Adjust spacing between images */
+            width: 30%; /* Adjust the width as needed */
+        }
+
+
 
 
 /* THIS IS WHERE THE DRESSING UP CODE STARTS*/
