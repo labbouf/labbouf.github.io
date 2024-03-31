@@ -578,12 +578,22 @@ section {
     color: white;
 }
 
+
+
 /* Tab content */
 .tabcontent {
-    display: none;
-  width: 100px; /* Adjust as needed */
-  
+     display: none; /* Keeps content hidden initially */
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    align-items: flex-start; /* Aligns items to the start of the flex container */
+    gap: 10px; /* Space between items */
+    width: 100%; /* Adjust as needed */
     height: auto; /* Adjust as needed */
+}
+
+.tabcontent .item {
+    width: 110px; /* Smaller size for items in tabs */
+    height: auto; /* Adjust as needed */
+    /* Add any other styles you want to apply only to items in the tabs */
 }
 
 .tablink:hover {
@@ -595,7 +605,7 @@ section {
 
 /* Clothing items */
 .item {
-    width: 250px; /* Adjust as needed */
+  width: 250px; /* Adjust as needed */
     height: auto; /* Adjust as needed */
     margin: 5px;
 }
