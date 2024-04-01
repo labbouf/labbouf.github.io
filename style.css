@@ -608,6 +608,8 @@ section {
   width: 250px; /* Adjust as needed */
     height: auto; /* Adjust as needed */
     margin: 5px;
+  position: relative;
+  z-index: 10;
 }
 
 .invisible {
