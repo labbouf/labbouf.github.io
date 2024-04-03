@@ -109,8 +109,9 @@ document.addEventListener("DOMContentLoaded", () => {
   images.forEach(img => {
     let deltaX = (Math.random() - 1) * 2;
     let deltaY = (Math.random() - 1) * 2;
-    let x = Math.random() * (document.getElementById('floatingContainer').clientWidth - img.clientWidth);
-    let y = Math.random() * (document.getElementById('floatingContainer').clientHeight - img.clientHeight);
+    let container = document.getElementById('floatingContainer');
+    let x = container.clientWidth / 2 - img.clientWidth / 2; // Adjusted to start from the middle horizontally
+    let y = container.clientHeight / 2 - img.clientHeight / 2; // Adjusted to start from the middle vertically
     let isHovered = false;
     let scaleFactor = 1; // Initial scale factor
 
@@ -126,11 +127,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function move() {
       if (!isHovered) {
-        if (x + deltaX <= 0 || x + img.clientWidth + deltaX >= document.getElementById('floatingContainer').clientWidth) {
+        if (x + deltaX <= 0 || x + img.clientWidth + deltaX >= container.clientWidth) {
           deltaX *= -1;
           scaleFactor = scaleFactor > 1 ? 1 : 1.1; // Toggle scale factor when hitting the horizontal edge
         }
-        if (y + deltaY <= 0 || y + img.clientHeight + deltaY >= document.getElementById('floatingContainer').clientHeight) {
+        if (y + deltaY <= 0 || y + img.clientHeight + deltaY >= container.clientHeight) {
           deltaY *= -1;
           scaleFactor = scaleFactor > 1 ? 1 : 1.1; // Toggle scale factor when hitting the vertical edge
         }
@@ -147,7 +148,6 @@ document.addEventListener("DOMContentLoaded", () => {
     move();
   });
 });
-
 
 
 
