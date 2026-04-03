@@ -7,16 +7,16 @@ video {
 
 @font-face {
         font-family: "Gotham Narrow Bold";
-        src: url("/assets-upload/fonts/gotham-narrow-bold.otf") format("opentype");
+        src: url("https://drive.google.com/file/d/1k1qn7dm48PB9eGTozd2wZyEdUdLv9fiR/view?usp=share_link");
 }
 @font-face {
         font-family: "Gotham Narrow Book";
-        src: url("/assets-upload/fonts/gotham-narrow-book.otf") format("opentype");
+        src: url("https://drive.google.com/file/d/1QapubHIa1KOrkyLuo3fypxlNtEDGsx33/view?usp=share_link");
 }
 
 @font-face {
         font-family: "Gotham Narrow Book Italic";
-        src: url("/assets-upload/fonts/gotham-narrow-book-italic.otf") format("opentype");
+        src: url("https://drive.google.com/file/d/1ZTla7RN5Nwa-sgCaDDI2z0iSajMVlCpP/view?usp=share_link");
 }
 
 
