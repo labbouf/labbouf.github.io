@@ -7,7 +7,7 @@ video {
 
 @font-face {
         font-family: "Gotham Narrow Bold";
-        src: url("https://cdn.glitch.global/ef9888ff-6cef-4f51-a0c3-ba8b459298a0/Gotham Narrow Bold?v=1710563804560");
+        src: url("/assets-upload/fonts/gotham-narrow-bold.otf") format("opentype");
 }
 @font-face {
         font-family: "Gotham Narrow Book";
