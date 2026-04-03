@@ -52,11 +52,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// Define an array with URLs of the images to toggle between
+
 var imageUrls = [
     "https://cdn.glitch.global/ef9888ff-6cef-4f51-a0c3-ba8b459298a0/Mohammed_Profile_Hidden_3?v=1710621645789",
-    "https://cdn.glitch.global/ef9888ff-6cef-4f51-a0c3-ba8b459298a0/Mohammed_Profile_Full?v=1710607772071",
-    // Add more image URLs as needed
+    "/Assets Upload/Images/Branding/Mohammed_Profile_Full.png",
+    
 ];
 
 // Counter to keep track of the current image index
