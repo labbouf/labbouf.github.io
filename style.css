@@ -16,7 +16,7 @@ video {
 
 @font-face {
         font-family: "Gotham Narrow Book Italic";
-        src: url("https://cdn.glitch.global/ef9888ff-6cef-4f51-a0c3-ba8b459298a0/Gotham Narrow Book Italic?v=1710563651459");
+        src: url("/assets-upload/fonts/gotham-narrow-book-italic.otf") format("opentype");
 }
 
 
