@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 var imageUrls = [
-    "https://cdn.glitch.global/ef9888ff-6cef-4f51-a0c3-ba8b459298a0/Mohammed_Profile_Hidden_3?v=1710621645789",
+    "https://res.cloudinary.com/dsdage8vw/image/upload/v1775322921/Mohammed_Profile_Hidden_i83cgj.png",
     "/Assets Upload/Images/Branding/Mohammed_Profile_Full.png",
     
 ];
