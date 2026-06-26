@@ -5,6 +5,11 @@ video {
   max-width: 100%;
 }
 
+html,
+body {
+  background-color: var(--site-background-color, #FFFFFF);
+}
+
 @font-face {
         font-family: "Gotham Narrow Bold";
         src: url("https://res.cloudinary.com/dsdage8vw/raw/upload/v1775260038/gotham-narrow-bold_nidwjp.otf");
@@ -532,7 +537,7 @@ section {
     .container,
     .container1 {
         grid-template-columns: minmax(0, 1fr);
-        gap: 16px;
+        gap: 4px;
     }
 
     .container > .column,

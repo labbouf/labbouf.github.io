@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     const logoTrigger = document.querySelector(".fixed-header .item");
     const pageRoot = document.documentElement;
+    const colors = ['#66C7F1', '#4477BC', '#DE78AF', '#EF423F', '#F7942E', '#FFCC2E', '#6ABF69', '#FFFFFF'];
+    const defaultColor = '#FFFFFF';
+    const colorStorageKey = "siteBackgroundColor";
 
     function applySiteBackgroundColor(color) {
+        pageRoot.style.setProperty('--site-background-color', color);
         pageRoot.style.backgroundColor = color;
         document.body.style.backgroundColor = color;
     }
@@ -11,26 +15,20 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    const colors = ['#66C7F1', '#4477BC', '#DE78AF', '#EF423F', '#F7942E', '#FFCC2E', '#6ABF69', '#FFFFFF'];
-    const colorStorageKey = "siteBackgroundColor";
     const savedColor = localStorage.getItem(colorStorageKey);
-    const savedIndex = savedColor ? colors.indexOf(savedColor.toUpperCase()) : -1;
+    const normalizedSavedColor = savedColor ? savedColor.toUpperCase() : "";
+    const initialColor = colors.includes(normalizedSavedColor) ? normalizedSavedColor : defaultColor;
+    const initialIndex = colors.indexOf(initialColor);
 
-    if (savedColor) {
-        applySiteBackgroundColor(savedColor);
-    }
-
-    if (savedIndex >= 0) {
-        logoTrigger.setAttribute("data-color-index", String(savedIndex));
-    } else {
-        logoTrigger.setAttribute("data-color-index", "-1");
-    }
+    applySiteBackgroundColor(initialColor);
+    logoTrigger.setAttribute("data-color-index", String(initialIndex));
+    localStorage.setItem(colorStorageKey, initialColor);
 
     logoTrigger.addEventListener("click", function() {
         let currentIndex = parseInt(this.getAttribute("data-color-index"), 10);
 
         if (Number.isNaN(currentIndex)) {
-            currentIndex = 0;
+            currentIndex = colors.indexOf(defaultColor);
         }
 
         const nextIndex = (currentIndex + 1) % colors.length;
@@ -256,10 +254,22 @@ function openTab(event, tabName) {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    const character = document.getElementById('character');
+    const resetButton = document.getElementById('resetItems');
+
+    if (!character || !resetButton) {
+        return;
+    }
+
+    if (character.dataset.creativeCoveInitialized === "true") {
+        return;
+    }
+
+    character.dataset.creativeCoveInitialized = "true";
+
     // Function to handle item click events
     function handleItemClick(event) {
-        const item = event.target;
-        const character = document.getElementById('character');
+        const item = event.currentTarget;
 
         // Check if the item is currently positioned on the character
         if (item.dataset.onCharacter === "true") {
@@ -269,10 +279,11 @@ document.addEventListener("DOMContentLoaded", function() {
             originalTab.appendChild(item);
             // Reset item state and styles
             item.dataset.onCharacter = "false";
-            item.removeAttribute('style');
+            item.style.cssText = item.dataset.originalStyle || "";
         } else {
             // If clicked within a tab, move it to the character at specified position
             character.appendChild(item);
+            item.style.cssText = item.dataset.originalStyle || "";
             item.style.position = 'absolute';
             item.style.left = item.dataset.x + 'px';
             item.style.top = item.dataset.y + 'px';
@@ -284,10 +295,16 @@ document.addEventListener("DOMContentLoaded", function() {
     // Initialize each item
     function initItems() {
         document.querySelectorAll('.tabcontent .item').forEach(item => {
+            if (item.dataset.creativeCoveBound === "true") {
+                return;
+            }
+
             // Attach click event listener to each item
             item.addEventListener('click', handleItemClick);
+            item.dataset.creativeCoveBound = "true";
             // Store original parent tab ID for each item
             item.dataset.originalTab = item.parentElement.id;
+            item.dataset.originalStyle = item.getAttribute('style') || "";
             // Initially, items are not on the character
             item.dataset.onCharacter = "false";
         });
@@ -297,18 +314,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Reset function to move items from character back to their original tabs
     function resetItems() {
-        document.querySelectorAll('.item').forEach(item => {
+        document.querySelectorAll('.tabcontent .item, #character .item').forEach(item => {
             if (item.dataset.onCharacter === "true") {
                 const originalTabId = item.dataset.originalTab;
                 const originalTab = document.getElementById(originalTabId);
                 originalTab.appendChild(item);
                 // Reset item state and remove styles
                 item.dataset.onCharacter = "false";
-                item.removeAttribute('style');
+                item.style.cssText = item.dataset.originalStyle || "";
             }
         });
     }
     
     // Attach reset functionality to the reset button
-    document.getElementById('resetItems').addEventListener('click', resetItems);
+    resetButton.addEventListener('click', resetItems);
 });
