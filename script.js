@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", function() {
     const logoTrigger = document.querySelector(".fixed-header .item");
+    const pageRoot = document.documentElement;
+
+    function applySiteBackgroundColor(color) {
+        pageRoot.style.backgroundColor = color;
+        document.body.style.backgroundColor = color;
+    }
 
     if (!logoTrigger) {
         return;
@@ -12,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const savedIndex = localStorage.getItem(indexStorageKey);
 
     if (savedColor) {
-        document.body.style.backgroundColor = savedColor;
+        applySiteBackgroundColor(savedColor);
     }
 
     if (savedIndex !== null) {
@@ -31,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const nextIndex = (currentIndex + 1) % colors.length;
         const nextColor = colors[nextIndex];
 
-        document.body.style.backgroundColor = nextColor;
+        applySiteBackgroundColor(nextColor);
         this.setAttribute("data-color-index", String(nextIndex));
         localStorage.setItem(colorStorageKey, nextColor);
         localStorage.setItem(indexStorageKey, String(nextIndex));
@@ -261,4 +267,3 @@ document.addEventListener("DOMContentLoaded", function() {
     // Attach reset functionality to the reset button
     document.getElementById('resetItems').addEventListener('click', resetItems);
 });
-
