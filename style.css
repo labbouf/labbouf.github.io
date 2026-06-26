@@ -449,6 +449,26 @@ section {
     animation: none;
 }
 
+.homepage-update-banner {
+    margin: 12px 0 20px 0;
+    padding: 16px 18px;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.homepage-update-banner__headline {
+    margin: 0 0 8px 0;
+    color: #ffffff;
+    line-height: 20px;
+}
+
+.homepage-update-banner__subline {
+    display: block;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 18px;
+}
+
 @media (max-width: 720px) {
     .promo-modal {
         right: 12px;
@@ -487,6 +507,20 @@ section {
         top: 8px;
         right: 8px;
         font-size: 22px;
+    }
+
+    .homepage-update-banner {
+        padding: 14px 16px;
+        margin-bottom: 16px;
+    }
+
+    .homepage-update-banner__headline {
+        margin-bottom: 6px;
+    }
+
+    .homepage-update-banner__subline {
+        font-size: 12px;
+        line-height: 18px;
     }
 }
 
@@ -547,6 +581,18 @@ section {
 
     .image-container img {
         width: 100%;
+    }
+
+    .video-container {
+        width: 100%;
+        text-align: left;
+    }
+
+    .video-container iframe {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        display: block;
     }
 }
 
