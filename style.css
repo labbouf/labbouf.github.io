@@ -622,24 +622,6 @@ section {
   z-index: 0;
 }
 
-.work-page .fixed-header,
-.work-page .container1 {
-  position: relative;
-  z-index: 1;
-}
-
-.work-page .floating-container {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
-
-
-
-
 .container2 {
      display: grid;
   grid-template-columns: 200px 1fr; /* 200px for text, rest for image */

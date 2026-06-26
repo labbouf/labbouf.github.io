@@ -13,18 +13,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const colors = ['#66C7F1', '#4477BC', '#DE78AF', '#EF423F', '#F7942E', '#FFCC2E', '#6ABF69', '#FFFFFF'];
     const colorStorageKey = "siteBackgroundColor";
-    const indexStorageKey = "siteBackgroundColorIndex";
     const savedColor = localStorage.getItem(colorStorageKey);
-    const savedIndex = localStorage.getItem(indexStorageKey);
+    const savedIndex = savedColor ? colors.indexOf(savedColor.toUpperCase()) : -1;
 
     if (savedColor) {
         applySiteBackgroundColor(savedColor);
     }
 
-    if (savedIndex !== null) {
-        logoTrigger.setAttribute("data-color-index", savedIndex);
+    if (savedIndex >= 0) {
+        logoTrigger.setAttribute("data-color-index", String(savedIndex));
     } else {
-        logoTrigger.setAttribute("data-color-index", "0");
+        logoTrigger.setAttribute("data-color-index", "-1");
     }
 
     logoTrigger.addEventListener("click", function() {
@@ -40,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
         applySiteBackgroundColor(nextColor);
         this.setAttribute("data-color-index", String(nextIndex));
         localStorage.setItem(colorStorageKey, nextColor);
-        localStorage.setItem(indexStorageKey, String(nextIndex));
     });
 });
 
