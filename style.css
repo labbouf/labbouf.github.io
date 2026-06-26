@@ -330,14 +330,20 @@ section {
 
 
 .element {
-  background-image: url('https://cdn.glitch.global/ef9888ff-6cef-4f51-a0c3-ba8b459298a0/M_Labban_Logo?v=1710604550686');
+  background-image: url('/Assets%20Upload/Images/Branding/Mo%20Labban%20Logo.png');
   width: 185px
   /* Set the size and other background properties as needed */
 }
 .svg-container {
-    width: 180px; /* Set the desired fixed width */
-    height: auto;
+    width: auto;
+    height: 40px;
   margin-left: 5px;
+}
+
+.svg-container img {
+    display: block;
+    width: auto;
+    height: 100%;
 }
 
 
@@ -361,6 +367,186 @@ section {
     background-color: #000000; /* Color of the line */
     position: absolute; /* Position relative to the image-container */
     bottom: 0; /* Align to the bottom of the container */
+}
+
+.promo-modal {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    width: min(360px, calc(100vw - 40px));
+    padding: 20px;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    display: none;
+}
+
+.promo-modal.is-visible {
+    display: block;
+}
+
+.promo-modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #000000;
+    font-family: "Gotham Narrow Bold";
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.promo-modal__logo {
+    display: block;
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    margin: 0 0 16px 0;
+}
+
+.promo-modal__headline {
+    margin: 0 24px 12px 0;
+    font-size: 20px;
+    line-height: 24px;
+    font-family: "Gotham Narrow Bold";
+    text-transform: uppercase;
+}
+
+.promo-modal__subhead {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.promo-modal__subhead strong {
+    font-family: "Gotham Narrow Bold";
+}
+
+.promo-modal__button {
+    display: inline-block;
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #000000;
+    border: 2px solid #000000;
+    border-radius: 0;
+    font-size: 12px;
+    color: #ffffff;
+    font-family: "Gotham Narrow Bold";
+    text-transform: uppercase;
+}
+
+.promo-modal__button:link,
+.promo-modal__button:visited {
+    color: #ffffff;
+}
+
+.promo-modal__button:hover {
+    background-color: #000000;
+    color: #ffffff;
+    animation: none;
+}
+
+@media (max-width: 720px) {
+    .promo-modal {
+        right: 12px;
+        left: 12px;
+        bottom: 12px;
+        width: auto;
+        padding: 16px;
+    }
+
+    .promo-modal__logo {
+        max-width: 150px;
+        margin-bottom: 14px;
+    }
+
+    .promo-modal__headline {
+        margin-right: 28px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        line-height: 20px;
+    }
+
+    .promo-modal__subhead {
+        margin-bottom: 16px;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .promo-modal__button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    .promo-modal__close {
+        top: 8px;
+        right: 8px;
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-page .container {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+    }
+
+    .home-page .container > .column {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .home-page .container > .column1 {
+        grid-column: 1;
+    }
+
+    .home-page .prevent-scrolling {
+        position: static;
+    }
+
+    .home-page nav {
+        font-size: 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .home-page nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    .home-page nav ul {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 12px;
+        width: max-content;
+        min-width: 100%;
+        padding-bottom: 6px;
+    }
+
+    .home-page nav ul li {
+        flex: 0 0 auto;
+    }
+
+    .home-page nav ul li a {
+        display: inline-block;
+        white-space: nowrap;
+    }
+
+    .home-page .image-container {
+        width: 100%;
+    }
+
+    .home-page .image-container img {
+        width: 100%;
+    }
 }
 
 
@@ -651,5 +837,3 @@ section {
     flex-direction: column; /* Adjust as needed */
     /* Other styling as needed */
 }
-
-

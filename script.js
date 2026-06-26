@@ -80,10 +80,17 @@ function toggleImage() {
 
 document.addEventListener("DOMContentLoaded", function() {
     // Display the password prompt when the page loads
-    document.getElementById("password-prompt").style.display = "block";
+    var passwordPrompt = document.getElementById("password-prompt");
+    var passwordSubmit = document.getElementById("password-submit");
+
+    if (!passwordPrompt || !passwordSubmit) {
+        return;
+    }
+
+    passwordPrompt.style.display = "block";
 
     // Check password when submitting the form
-    document.getElementById("password-submit").addEventListener("click", function() {
+    passwordSubmit.addEventListener("click", function() {
         var password = document.getElementById("password-input").value;
         
         if (password === "givememo") {
@@ -92,6 +99,24 @@ document.addEventListener("DOMContentLoaded", function() {
         } else {
             alert("Incorrect password. Please try again."); // Display an alert for incorrect password
         }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var isHomePage = document.body.classList.contains("home-page");
+    var promoModal = document.getElementById("homePromoModal");
+    var promoClose = document.getElementById("homePromoClose");
+
+    if (!isHomePage || !promoModal || !promoClose) {
+        return;
+    }
+
+    promoModal.classList.add("is-visible");
+    promoModal.setAttribute("aria-hidden", "false");
+
+    promoClose.addEventListener("click", function() {
+        promoModal.classList.remove("is-visible");
+        promoModal.setAttribute("aria-hidden", "true");
     });
 });
 
@@ -230,7 +255,5 @@ document.addEventListener("DOMContentLoaded", function() {
     // Attach reset functionality to the reset button
     document.getElementById('resetItems').addEventListener('click', resetItems);
 });
-
-
 
 
