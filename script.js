@@ -141,15 +141,46 @@ document.addEventListener("DOMContentLoaded", function() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const images = document.querySelectorAll('.floating-img');
+  const container = document.getElementById('floatingContainer');
+
+  if (!container || images.length === 0) {
+    return;
+  }
+
+  function centeredPosition(containerSize, imageSize) {
+    return Math.max((containerSize - imageSize) / 2, 0);
+  }
+
+  function randomVelocity() {
+    const direction = Math.random() < 0.5 ? -1 : 1;
+    const speed = 0.75 + Math.random() * 1.25;
+    return direction * speed;
+  }
 
   images.forEach(img => {
-    let deltaX = (Math.random() - 1) * 2;
-    let deltaY = (Math.random() - 1) * 2;
-    let container = document.getElementById('floatingContainer');
-    let x = container.clientWidth / 2 - img.clientWidth / 2; // Adjusted to start from the middle horizontally
-    let y = container.clientHeight / 2 - img.clientHeight / 2; // Adjusted to start from the middle vertically
+    let deltaX = randomVelocity();
+    let deltaY = randomVelocity();
+    let x = 0;
+    let y = 0;
     let isHovered = false;
     let scaleFactor = 1; // Initial scale factor
+    let hasStarted = false;
+
+    function setCenteredStart() {
+      const containerWidth = container.clientWidth;
+      const containerHeight = container.clientHeight;
+      const imageWidth = img.clientWidth;
+      const imageHeight = img.clientHeight;
+
+      if (!containerWidth || !containerHeight || !imageWidth || !imageHeight) {
+        return false;
+      }
+
+      x = centeredPosition(containerWidth, imageWidth);
+      y = centeredPosition(containerHeight, imageHeight);
+      img.style.transform = `translate(${x}px, ${y}px) scale(${scaleFactor})`;
+      return true;
+    }
 
     img.addEventListener('mouseenter', () => {
       isHovered = true;
@@ -162,6 +193,15 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     function move() {
+      if (!hasStarted) {
+        hasStarted = setCenteredStart();
+
+        if (!hasStarted) {
+          requestAnimationFrame(move);
+          return;
+        }
+      }
+
       if (!isHovered) {
         if (x + deltaX <= 0 || x + img.clientWidth + deltaX >= container.clientWidth) {
           deltaX *= -1;
@@ -179,6 +219,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       requestAnimationFrame(move);
+    }
+
+    if (img.complete) {
+      setCenteredStart();
+    } else {
+      img.addEventListener('load', setCenteredStart, { once: true });
     }
 
     move();

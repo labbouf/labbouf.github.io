@@ -770,10 +770,41 @@ section {
     gap: 20px;
   
         }
-        .image-container3 img {
+.image-container3 img {
             margin: 5px; /* Adjust spacing between images */
             width: 30%; /* Adjust the width as needed */
         }
+
+.project-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.project-pagination > div {
+    display: flex;
+    align-items: center;
+}
+
+.project-pagination__arrow {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #000000;
+    border-right: 2px solid #000000;
+    vertical-align: middle;
+}
+
+.project-pagination__arrow--left {
+    margin-right: 10px;
+    transform: rotate(-135deg);
+}
+
+.project-pagination__arrow--right {
+    margin-left: 10px;
+    transform: rotate(45deg);
+}
 
 
 
