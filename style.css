@@ -278,14 +278,18 @@ section {
 
 .accordion-arrow {
     margin-left: auto;
-  margin-top: 20px;
+  margin-top: 12px;
     transition: transform 0.3s ease;
-  width: 20px;
-  height: 20px; 
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #000000;
+  border-bottom: 2px solid #000000;
+  transform: rotate(45deg);
+  transform-origin: center;
 }
 
 .accordion-item.active .accordion-arrow {
-    transform: rotate(180deg);
+    transform: rotate(-135deg);
 }
 
 .accordion-content {
@@ -581,6 +585,18 @@ section {
 
     .image-container img {
         width: 100%;
+    }
+
+    .resume-page .container {
+        gap: 0;
+    }
+
+    .resume-page .resume-seam-bottom {
+        margin-bottom: 0;
+    }
+
+    .resume-page .resume-seam-top {
+        display: none;
     }
 
     .video-container {

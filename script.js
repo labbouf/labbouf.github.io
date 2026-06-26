@@ -45,19 +45,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Get all accordion items
-    var accordionItems = document.querySelectorAll('.accordion-item');
+document.addEventListener("click", function(event) {
+    var header = event.target.closest('.accordion-header');
 
-    // Loop through each accordion item
-    accordionItems.forEach(function(item) {
-        // Add click event listener to the accordion header
-        var header = item.querySelector('.accordion-header');
-        header.addEventListener('click', function() {
-            // Toggle the active class on the accordion item
-            item.classList.toggle('active');
-        });
-    });
+    if (!header) {
+        return;
+    }
+
+    var item = header.closest('.accordion-item');
+
+    if (!item) {
+        return;
+    }
+
+    item.classList.toggle('active');
 });
 
 
