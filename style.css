@@ -606,11 +606,12 @@ section {
   height: 80vh; /* Adjust based on your needs */
   position: relative;
   overflow: hidden;
-   position: absolute;
+  position: absolute;
   
   display: flex;
   flex-direction: column;
-    z-index: -1; /* Ensure the images are in front of text */
+  z-index: 0;
+  pointer-events: none;
 
 }
 
@@ -618,7 +619,22 @@ section {
   position: absolute;
   max-width: 200px; /* Adjust size as needed */
   max-height: 150px;
-    z-index: -2; /* Set a higher z-index for the images */
+  z-index: 0;
+}
+
+.work-page .fixed-header,
+.work-page .container1 {
+  position: relative;
+  z-index: 1;
+}
+
+.work-page .floating-container {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
 }
 
 
