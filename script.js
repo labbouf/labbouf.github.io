@@ -1,35 +1,41 @@
-document.querySelectorAll('.item').forEach(item => {
-    item.addEventListener('click', function() {
-        // Retrieve the color from the data-color attribute of the clicked item
-        const color = this.getAttribute('data-color');
-        
-        // Change the background color of the body
-        document.body.style.backgroundColor = color;
+document.addEventListener("DOMContentLoaded", function() {
+    const logoTrigger = document.querySelector(".fixed-header .item");
+
+    if (!logoTrigger) {
+        return;
+    }
+
+    const colors = ['#66C7F1', '#4477BC', '#DE78AF', '#EF423F', '#F7942E', '#FFCC2E', '#6ABF69', '#FFFFFF'];
+    const colorStorageKey = "siteBackgroundColor";
+    const indexStorageKey = "siteBackgroundColorIndex";
+    const savedColor = localStorage.getItem(colorStorageKey);
+    const savedIndex = localStorage.getItem(indexStorageKey);
+
+    if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+    }
+
+    if (savedIndex !== null) {
+        logoTrigger.setAttribute("data-color-index", savedIndex);
+    } else {
+        logoTrigger.setAttribute("data-color-index", "0");
+    }
+
+    logoTrigger.addEventListener("click", function() {
+        let currentIndex = parseInt(this.getAttribute("data-color-index"), 10);
+
+        if (Number.isNaN(currentIndex)) {
+            currentIndex = 0;
+        }
+
+        const nextIndex = (currentIndex + 1) % colors.length;
+        const nextColor = colors[nextIndex];
+
+        document.body.style.backgroundColor = nextColor;
+        this.setAttribute("data-color-index", String(nextIndex));
+        localStorage.setItem(colorStorageKey, nextColor);
+        localStorage.setItem(indexStorageKey, String(nextIndex));
     });
-});
-
-
-const colors = ['#66C7F1', '#4477BC', '#DE78AF', '#EF423F', '#F7942E', '#FFCC2E', '#6ABF69', '#FFFFFF'];
-
-// Initialize the current index if it's not already set
-document.querySelector('.item').setAttribute('data-color-index', '0');
-
-// Add a click event listener to the item
-document.querySelector('.item').addEventListener('click', function() {
-    // Retrieve the current color index from the data-color-index attribute
-    let currentIndex = parseInt(this.getAttribute('data-color-index'), 10);
-    
-    // Calculate the next color index
-    let nextIndex = (currentIndex + 1) % colors.length;
-    
-    // Get the next color from the array
-    let nextColor = colors[nextIndex];
-    
-    // Apply the next color to the background
-    document.body.style.backgroundColor = nextColor;
-    
-    // Update the data-color-index attribute with the next index
-    this.setAttribute('data-color-index', nextIndex);
 });
 
 
@@ -255,5 +261,4 @@ document.addEventListener("DOMContentLoaded", function() {
     // Attach reset functionality to the reset button
     document.getElementById('resetItems').addEventListener('click', resetItems);
 });
-
 
